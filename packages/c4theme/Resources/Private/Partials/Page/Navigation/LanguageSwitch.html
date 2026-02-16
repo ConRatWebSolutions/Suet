@@ -1,0 +1,30 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+
+<f:if condition="{languageNavigation}">
+  <nav class="langswitch" aria-label="Sprachumschaltung">
+    <ul class="langswitch-list">
+      <f:for each="{languageNavigation}" as="languageItem">
+        <li class="langswitch-item{f:if(condition: languageItem.active, then: ' langswitch-item--active')}">
+          <f:if condition="{languageItem.available}">
+            <f:then>
+              <a href="{languageItem.link}" hreflang="{languageItem.hreflang}" title="{languageItem.title}"
+                class="langswitch-link">
+
+                <img class="langswitch" src="/fileadmin/webdaten/{languageItem.flag}.jpg"
+                  alt="{languageItem.navigationTitle}" data-cmp-info="10">
+              </a>
+            </f:then>
+            <f:else>
+              <span class="langswitch-link langswitch-link--disabled" title="{languageItem.title}">
+                <img class="langswitch" src="/fileadmin/webdaten/{languageItem.flag}.jpg"
+                  alt="{languageItem.navigationTitle}" data-cmp-info="10">
+              </span>
+            </f:else>
+          </f:if>
+        </li>
+      </f:for>
+    </ul>
+  </nav>
+</f:if>
+
+</html>

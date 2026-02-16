@@ -1,0 +1,20 @@
+#!/bin/bash
+dotEnvFile="/var/www/html/.env.$(basename "${BASH_SOURCE[0]}")"
+. "$dotEnvFile"
+
+# you can use the env variables defined in .env.$currentTarget here:
+target=(
+   [sshUser]=ssh-584194-suet
+   [sshHost]=conrat-kunde.de
+   [sshPort]=22
+   [sshPrivKey]=
+   [remoteBasePath]=/rp-hosting/141/153/typo3_2026/
+   [dataDirs]="public/fileadmin public/user_upload"
+   [mysqlHost]="$TYPO3_CONF_VARS__DB__Connections__Default__host"
+   [mysqlPort]="$TYPO3_CONF_VARS__DB__Connections__Default__port"
+   [mysqlSocket]="/var/lib/mysql/mysql.sock"
+   [mysqlUser]="$TYPO3_CONF_VARS__DB__Connections__Default__user"
+   [mysqlPass]="$TYPO3_CONF_VARS__DB__Connections__Default__password"
+   [mysqlDatabase]="$TYPO3_CONF_VARS__DB__Connections__Default__dbname"
+   [ignoredDbTablesPattern]="^(sys_log|.*_sessions|cf_.*|.*cache.*|sys_file_processedfile|sys_lockedrecords|tx_tracking_.*|tx_realurl_urldata|index_debug|index_fulltext|index_grlist|index_phash|index_rel|index_section|index_stat_search|index_stat_word|index_words|tx_crawler_queue|tx_extensionmanager_domain_model_extension|tx_powermail_domain_model_mail|tx_powermail_domain_model_answer)$"
+)

@@ -1,0 +1,47 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<div class="team-content team-content--suet-alt">
+    <f:if condition="{data.tx_c4theme_email}">
+        <div class="team-content__row">
+            <div class="team-content__info">
+                <f:if condition="{data.header}">
+                    <h3 class="team-content__name">{data.header}</h3>
+                </f:if>
+                <f:if condition="{data.subheader}">
+                    <p class="team-content__title"><strong>{data.subheader}</strong></p>
+                </f:if>
+                <f:if condition="{data.bodytext}">
+                    <div class="team-content__text">
+                        <f:format.html>{data.bodytext}</f:format.html>
+                    </div>
+                </f:if>
+            </div>
+            <div class="team-content__email-wrap">
+                <f:link.email email="{data.tx_c4theme_email}" class="team-content__email">
+                    {data.tx_c4theme_email}
+                </f:link.email>
+            </div>
+        </div>
+    </f:if>
+    <f:if condition="{data.tx_c4theme_email} == ''">
+        <div class="team-content__simple team-content__row">
+            <f:if condition="{previewImage.0}">
+                <div class="team-content__image">
+                    <f:image image="{previewImage.0}" alt="{data.header}" />
+                </div>
+            </f:if>
+            <f:if condition="{data.header}">
+                <h3>{data.header}</h3>
+            </f:if>
+            <f:if condition="{data.subheader}">
+                <p class="team-content__title"><strong>{data.subheader}</strong></p>
+            </f:if>
+            <f:if condition="{data.bodytext}">
+                <div class="team-content__text">
+                    <f:format.html>{data.bodytext}</f:format.html>
+                </div>
+            </f:if>
+        </div>
+    </f:if>
+</div>
+
+</html>

@@ -1,0 +1,134 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+<f:section name="Main">
+
+
+  <div class="container  page">
+    <div class="row">
+
+
+
+
+
+      <div class="col-md-3 hidden-sm hidden-xs print-col1">
+        <div class="vlist">
+          <f:render partial="Navigation/MainMenue" arguments="{_all}" />
+        </div>
+        <f:format.raw>{SIDEBAR}</f:format.raw>
+      </div>
+      <div class="col-md-9 col-sm-12">
+        <f:render partial="Structure/Slider" arguments="{_all}" />
+
+
+        <f:render partial="Navigation/BreadcrumbMenue" arguments="{_all}" />
+        <!--TYPO3SEARCH_begin-->
+        <f:variable name="c0">
+          <f:cObject typoscriptObjectPath="lib.dynamicContent" data="{colPos: 0}" />
+        </f:variable>
+        <f:if condition="{c0} != ''">
+          <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-sm-12 colBox0">
+              <f:format.raw>{c0}</f:format.raw>
+            </div>
+          </div>
+        </f:if>
+        <f:variable name="c1">
+          <f:cObject typoscriptObjectPath="lib.dynamicContent" data="{colPos: 1}" />
+        </f:variable>
+        <f:if condition="{c1} != ''">
+          <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-4 colBox1">
+              <f:cObject typoscriptObjectPath="lib.dynamicContent" data="{colPos: '1'}" />
+            </div>
+            <div class="col-lg-8 col-md-8 col-sm-8 colBox2">
+              <f:cObject typoscriptObjectPath="lib.dynamicContent" data="{colPos: '2'}" />
+            </div>
+          </div>
+        </f:if>
+        <f:variable name="c3">
+          <f:cObject typoscriptObjectPath="lib.dynamicContent" data="{colPos: 3}" />
+        </f:variable>
+        <f:if condition="{c3} != ''">
+          <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-sm-12 colBox3">
+              <f:format.raw>{c3}</f:format.raw>
+            </div>
+          </div>
+        </f:if>
+        <f:variable name="c4">
+          <f:cObject typoscriptObjectPath="lib.dynamicContent" data="{colPos: 4}" />
+        </f:variable>
+        <f:if condition="{c4} != ''">
+          <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-4 colBox4">
+              <f:cObject typoscriptObjectPath="lib.dynamicContent" data="{colPos: '4'}" />
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 colBox5">
+              <f:cObject typoscriptObjectPath="lib.dynamicContent" data="{colPos: '5'}" />
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 colBox6">
+              <f:cObject typoscriptObjectPath="lib.dynamicContent" data="{colPos: '6'}" />
+            </div>
+          </div>
+        </f:if>
+        <f:variable name="c11">
+          <f:cObject typoscriptObjectPath="lib.dynamicContent" data="{colPos: 11}" />
+        </f:variable>
+        <f:if condition="{c11} != ''">
+          <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-4 colBox4">
+              <f:cObject typoscriptObjectPath="lib.dynamicContent" data="{colPos: '11'}" />
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 colBox5">
+              <f:cObject typoscriptObjectPath="lib.dynamicContent" data="{colPos: '12'}" />
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 colBox6">
+              <f:cObject typoscriptObjectPath="lib.dynamicContent" data="{colPos: '13'}" />
+            </div>
+          </div>
+        </f:if>
+        <f:variable name="c7">
+          <f:cObject typoscriptObjectPath="lib.dynamicContent" data="{colPos: 7}" />
+        </f:variable>
+        <f:if condition="{c7} != ''">
+          <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 colBox7">
+              <f:format.raw>{c7}</f:format.raw>
+            </div>
+          </div>
+        </f:if>
+        <f:variable name="c8">
+          <f:cObject typoscriptObjectPath="lib.dynamicContent" data="{colPos: 8}" />
+        </f:variable>
+        <f:if condition="{c8} != ''">
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6 colBox8">
+              <f:cObject typoscriptObjectPath="lib.dynamicContent" data="{colPos: '8'}" />
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 colBox9">
+              <f:cObject typoscriptObjectPath="lib.dynamicContent" data="{colPos: '9'}" />
+            </div>
+          </div>
+        </f:if>
+        <f:variable name="c10">
+          <f:cObject typoscriptObjectPath="lib.dynamicContent" data="{colPos: 10}" />
+        </f:variable>
+        <f:if condition="{c10} != ''">
+          <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-sm-12 colBox10">
+              <f:cObject typoscriptObjectPath="lib.dynamicContent" data="{colPos: '10'}" />
+            </div>
+          </div>
+        </f:if>
+        <f:render partial="Structure/BottomContent" arguments="{_all}" />
+      </div>
+      <!--TYPO3SEARCH_end-->
+
+    </div>
+  </div>
+
+
+
+</f:section>
+
+</html>

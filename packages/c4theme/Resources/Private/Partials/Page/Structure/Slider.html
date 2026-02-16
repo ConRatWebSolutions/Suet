@@ -1,0 +1,54 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:if condition="{theme.socialmedia.channels}">
+    <div id="carousel-5287" class="carousel carousel-small carousel-fade slide" data-bs-wrap="true"
+        data-bs-ride="carousel" data-bs-interval="5000" role="region" aria-roledescription="carousel">
+        <!-- Slides -->
+        <div class="carousel-content">
+            <div class="carousel-content-inner">
+                <div class="carousel-image">
+                    <f:for each="{crmediaFiles}" as="file" iteration="i">
+                        <div class="item carousel-item   carousel-item-type-image {f:if(condition: '{i.isFirst}', then: 'active')}"
+                            aria-current="{f:if(condition: '{i.isFirst}', then: 'true', else: 'false')}"
+                            data-itemno="{i.index}" role="group" aria-roledescription="slide">
+                            <f:link.typolink parameter="{file.link}">
+                                <f:image image="{file}" alt="{file.alternative}" title="{file.title}" />
+                            </f:link.typolink>
+
+                            <f:if condition="{file.title} || {file.description}">
+                                <div class="carousel-caption">
+                                    <f:if condition="{file.title}">
+                                        <p class="title">
+                                            <span class="highlight">
+                                                <f:format.raw>{file.title}</f:format.raw>
+                                            </span>
+                                        </p>
+                                    </f:if>
+                                    <f:if condition="{file.description}">
+                                        <p class="csptext">
+                                            <span class="highlight">
+                                                <f:format.raw>{file.description}</f:format.raw>
+                                            </span>
+                                        </p>
+                                    </f:if>
+                                </div>
+                            </f:if>
+                        </div>
+                    </f:for>
+                </div>
+            </div>
+
+            <button data-bs-slide="prev" data-bs-target="#carousel-5287" type="button"
+                class="carousel-control carousel-control-prev">
+                <span class="carousel-control-icon carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button data-bs-slide="next" data-bs-target="#carousel-5287" type="button"
+                class="carousel-control carousel-control-next">
+                <span class="carousel-control-icon carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+</f:if>
+
+</html>

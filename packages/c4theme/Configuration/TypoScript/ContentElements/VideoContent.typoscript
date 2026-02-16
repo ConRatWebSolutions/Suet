@@ -1,0 +1,21 @@
+#### CTYPE: video_content ####
+tt_content.video_content >
+tt_content.video_content =< lib.contentElement
+tt_content.video_content {
+    templateName = VideoContent
+    templateRootPaths {
+        20 = EXT:c4theme/Resources/Private/Templates/ContentElements/
+    }
+    dataProcessing {
+        10 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
+        10 {
+            references.fieldName = image
+            as = previewImage
+        }
+        20 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
+        20 {
+            references.fieldName = assets
+            as = locVideo
+        }
+    }
+}

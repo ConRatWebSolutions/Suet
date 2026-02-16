@@ -1,0 +1,41 @@
+#!/bin/bash
+
+set -eux
+
+# define target as array
+declare -A target
+
+# require constants
+targetDir=$(dirname "$0")/targets
+. "$targetDir"/"live"
+
+
+
+# Extract username from variable
+sshUser=${target[sshUser]}
+
+# Prompt user for confirmation
+read -p "Is the user  ${sshUser} correct? (ja/nein): " userInput
+
+# Checking user input
+if [ "$userInput" == "ja" ]; then
+    echo "User confirmed. Continue..."
+    echo "Use User: ${sshUser}"
+else
+    echo " User not confirmed. Script will be terminated."
+    exit 1
+fi
+
+echo "Inhalt des aktuellen Verzeichnisses:"
+ls
+
+#rsync -avz "${target[sshUser]}"@"${target[sshHost]}":~/typo_13/config/ ./config/
+#rsync -avz   "${target[sshUser]}"@"${target[sshHost]}":~/typo_13/packages/ ./packages/
+#rsync -avz   "${target[sshUser]}"@"${target[sshHost]}":~/typo3_10/public/ ./public/
+#rsync -avz   "${target[sshUser]}"@"${target[sshHost]}":~/typo_13/var/ ./var/
+#rsync -avz   "${target[sshUser]}"@"${target[sshHost]}":~/typo_13/vendor/ ./vendor/
+
+rsync -avz   "${target[sshUser]}"@"${target[sshHost]}":~/typo3_11/fileadmin ./public/fileadmin
+ 
+
+echo "files has been updated from server."

@@ -1,0 +1,15 @@
+.DS_Store
+.idea
+nbproject
+var/*
+/var/*
+!/var/labels
+/vendor
+/public/*
+!/public/.htaccess
+/data
+data/*
+.env        
+.env.live
+!.env.local
+.vscode

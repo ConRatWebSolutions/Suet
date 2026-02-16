@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# saner programming env: these switches turn some bugs into errors
+set -ex
+
+# init
+targetDir=$(dirname "$0")/targets
+dataDir="/var/www/html/data/"
+
+typeset -A target
+
+# check if param 1 is set
+if [ -z "$1" ];
+    then
+        environment="live"
+    else
+        environment=$1
+fi
+
+# require constants
+. "$targetDir"/"$environment"
+
+# set date to curent date
+date=$(date +%Y-%m-%d_%H-%M-%S)
+
+# ssh remote dump db
+ssh -p "${target[sshPort]}" "${target[sshUser]}"@"${target[sshHost]}" "mysqldump -h ${target[mysqlHost]} -P ${target[mysqlPort]} -u ${target[mysqlUser]} -p'${target[mysqlPass]}' ${target[mysqlDatabase]} | gzip -9" > "$dataDir$date"-db.sql.gz
+
+zcat "$dataDir$date"-db.sql.gz | mysql -h db -u root -proot db

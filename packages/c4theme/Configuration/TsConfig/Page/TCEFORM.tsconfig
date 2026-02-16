@@ -1,0 +1,33 @@
+#
+# TCEFORM
+#
+TCEFORM {
+    pages {
+
+    }
+    tt_content {
+         header_class{
+            addItems {
+                     
+                     
+                }
+        },
+  
+        frame_class {
+            addItems {
+                    teaser-1 = dunkler Hintergrund
+                    
+                
+                }
+        }
+   }
+ 
+
+}
+  tx_news.templateLayouts {
+        1 = News 
+        2 = Liste
+        3 = Card
+        4 = Slider
+        5 = Veranstaltung
+}

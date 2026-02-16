@@ -1,0 +1,103 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+<f:section name="Main">
+
+    <div class="container no-padding">
+        <div class="page produktpage">
+            <div class="row">
+                <div class="col-md-3 hidden-sm hidden-xs print-col1">
+                    <div class="vlist">
+                        <f:render partial="Navigation/MainMenue" arguments="{_all}" />
+                    </div>
+                    <f:format.raw>{SIDEBAR}</f:format.raw>
+                </div>
+                <div class="col-md-9 col-sm-12 col3">
+                    <f:render partial="Structure/Slider" arguments="{_all}" />
+
+
+                    <div id="breadcrumbs" class="hidden-xs">{HOMENAME}: Home</div>
+                    <!--TYPO3SEARCH_begin-->
+                    <f:variable name="c0">
+                        <f:cObject typoscriptObjectPath="lib.dynamicContent" data="{colPos: 0}" />
+                    </f:variable>
+                    <f:if condition="{c0} != ''">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-sm-12 colBox0">
+                                <f:format.raw>{c0}</f:format.raw>
+                            </div>
+                        </div>
+                    </f:if>
+                    <f:variable name="c1">
+                        <f:cObject typoscriptObjectPath="lib.dynamicContent" data="{colPos: 1}" />
+                    </f:variable>
+                    <f:if condition="{c1} != ''">
+                        <div class="row">
+                            <div class="col-lg-4 col-md-4 col-sm-4 colBox1">
+                                <f:format.raw>{c1}</f:format.raw>
+                            </div>
+                        </div>
+                    </f:if>
+                    <f:variable name="c4">
+                        <f:cObject typoscriptObjectPath="lib.dynamicContent" data="{colPos: 11}" />
+                    </f:variable>
+                    <f:if condition="{c11} != ''">
+                        <div class="row">
+                            <div class="col-lg-4 col-md-4 col-sm-4 colBox11">
+                                <f:format.raw>{c11}</f:format.raw>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 colBox5">
+                                <f:cObject typoscriptObjectPath="lib.dynamicContent" data="{colPos: '12'}" />
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 colBox6">
+                                <f:cObject typoscriptObjectPath="lib.dynamicContent" data="{colPos: '13'}" />
+                            </div>
+                        </div>
+                    </f:if>
+                    <f:variable name="c7">
+                        <f:cObject typoscriptObjectPath="lib.dynamicContent" data="{colPos: 7}" />
+                    </f:variable>
+                    <f:if condition="{c7} != ''">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 colBox7">
+                                <f:format.raw>{c7}</f:format.raw>
+                            </div>
+                        </div>
+                    </f:if>
+                    <f:variable name="c8">
+                        <f:cObject typoscriptObjectPath="lib.dynamicContent" data="{colPos: 8}" />
+                    </f:variable>
+                    <f:if condition="{c8} != ''">
+                        <div class="row">
+                            <div class="col-lg-8 col-md-8 col-sm-8 colBox8">
+                                <f:cObject typoscriptObjectPath="lib.dynamicContent" data="{colPos: '8'}" />
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 colBox9">
+                                <f:cObject typoscriptObjectPath="lib.dynamicContent" data="{colPos: '9'}" />
+                            </div>
+                        </div>
+                    </f:if>
+                    <f:variable name="c10">
+                        <f:cObject typoscriptObjectPath="lib.dynamicContent" data="{colPos: 10}" />
+                    </f:variable>
+                    <f:if condition="{c10} != ''">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-sm-12 colBox10">
+                                <f:format.raw>{c10}</f:format.raw>
+                            </div>
+                        </div>
+                    </f:if>
+                    <f:render partial="Structure/BottomContent" arguments="{_all}" />
+                </div>
+                <!--TYPO3SEARCH_end-->
+
+
+
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+</f:section>
+
+</html>

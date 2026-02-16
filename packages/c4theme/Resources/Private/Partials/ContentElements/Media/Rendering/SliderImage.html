@@ -1,0 +1,31 @@
+<f:for each="{variants}" as="variant" iteration="iterator">
+    <f:if condition="{variant.width}">
+        <f:variable name="width" value="{variant.width}" />
+        <f:variable name="sizeHeight" value="{variant.height}" />
+        <f:variable name="name" value="{variant.name}" />
+        <f:variable name="mediaQuery" value="{variant.mediaQuery}" />
+        <f:variable name="srcset" value="{variant.srcset}" />
+        <source data-variant="{name}" {f:if(condition: sizeHeight, then: 'data-width="{width}" data-height="{sizeHeight}"', else: 'data-maxwidth="{width}"')} {mediaQuery->f:format.raw()} srcset="{srcset}">
+    </f:if>
+</f:for>
+
+<source data-variant="default" data-maxwidth="1920" media="(min-width: 1920px)" {mediaQuery->f:format.raw()} srcset="{srcset}">
+<f:variable name="defaultWidth" value="1920" />
+<f:variable name="defaultAspectRatio" value="{variants.default.aspectRatio}" />
+<f:if condition="{defaultAspectRatio}">
+    <f:variable name="aspectRatio">{defaultAspectRatio as float}</f:variable>
+    <f:variable name="defaultHeight">{defaultWidth / aspectRatio}</f:variable>
+    <f:variable name="defaultHeight">{defaultHeight as integer}c</f:variable>
+</f:if>
+<f:if condition="{defaultHeight}">
+    <f:then>
+        <f:variable name="src" value="{f:uri.image(image: file, cropVariant: 'default', width: 1920, height: defaultHeight)}" />
+    </f:then>
+    <f:else>
+        <f:variable name="src" value="{f:uri.image(image: file, cropVariant: 'default', width: 1920)}" />
+    </f:else>
+</f:if>
+<f:variable name="finalWidth" value="{bk2k:data.imageInfo(src: src, property: 'width')}" />
+<f:variable name="finalHeight" value="{bk2k:data.imageInfo(src: src, property: 'height')}" />
+<img loading="lazy" src="{src}" width="1920" height="{finalHeight}" title="{file.properties.title}" alt="{file.properties.alternative}">
+</picture>

@@ -1,0 +1,15 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      xmlns:formvh="http://typo3.org/ns/TYPO3/CMS/Form/ViewHelpers"
+      xmlns:c4="http://typo3.org/ns/Conrat/C4theme/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<div class="form-group">
+    <f:if condition="{element.label}">
+        <label class="control-label" for="{element.uniqueIdentifier}">{formvh:translateElementProperty(element: element, property: 'label')}</label>
+    </f:if>
+    <div class="captcha-wrapper">
+        <c4:form.captcha id="{element.properties.id}" name="{element.uniqueIdentifier}" class="form-control" />
+    </div>
+</div>
+
+</html> 

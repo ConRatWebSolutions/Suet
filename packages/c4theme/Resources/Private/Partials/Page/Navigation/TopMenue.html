@@ -1,0 +1,30 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+
+<f:spaceless>
+	<f:if condition="{topmenu}">
+		<div id="topnav" class=" hidden-xs hidden-ssm">
+			<ul class="menu hidden-xs ">
+				<f:for each="{topmenu}" as="menu" iteration="itfooter">
+					<li>
+						<a href="{menu.link}" class="{f:if(condition:'{menu.active}',then:'active')}"><span
+								class="item-title">{menu.title}</span></a>
+
+						<f:if condition="{menu.children}">
+
+							<ul class="nav-ebene-zwei">
+								<f:for each="{menu.children}" as="children">
+									<li><a href="{children.link}" title="{children.title}"
+											class="{f:if(condition:'{children.active}',then:'active')}">{children.title}</a>
+									</li>
+								</f:for>
+							</ul>
+						</f:if>
+					</li>
+				</f:for>
+			</ul>
+		</div>
+	</f:if>
+	</div>
+</f:spaceless>
+
+</html>

@@ -1,0 +1,67 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+	  xmlns:n="http://typo3.org/ns/GeorgRinger/News/ViewHelpers"
+	  data-namespace-typo3-fluid="true">
+ 
+	<n:excludeDisplayedNews newsItem="{newsItem}"/>
+    
+    
+    <div class="card-group-element-item">
+                            <div class="card">
+                                <div class="card-img-top">
+                                  <n:link newsItem="{newsItem}" settings="{settings}" title="{newsItem.title}">
+                                    <f:alias map="{mediaElement: newsItem.mediaPreviews.0}">
+                                        <f:if condition="{mediaElement.originalResource.type} == 2">
+                                           <f:then>
+                                                 
+                                               <div class="imageholder" style="background: #000 url({f:uri.image(image:mediaElement)}) center center / cover no-repeat;  height:100%; width: 100%"></div>
+                                             </f:then>
+                                            <f:else>
+                                                <div class="imageholder" style="background: url('/fileadmin/dummy-preview-image.png') center center / cover;  height:100%; width: 100%"></div>
+                                             </f:else>
+                                             
+                                             
+                                        </f:if>
+                                         
+                                    </f:alias>
+                                 </n:link>
+                                </div>  
+                                <div class="card-body">
+                                    
+                                    <n:link newsItem="{newsItem}" settings="{settings}" title="{newsItem.title}"><h2 class="card-title">{newsItem.title}</h2></n:link>		
+
+                                     <n:removeMediaTags>
+                                    {newsItem.teaser -> f:format.raw()}
+                                    </n:removeMediaTags>
+                                    
+                                </div>
+                                
+                                    
+                                    <div class="card-footer">
+                                        
+                                         <n:link newsItem="{newsItem}" settings="{settings}" title="{newsItem.title}" class="pbtn-primary" >
+                                            
+                                             
+                                                  Zum Artikel 
+                                            </n:link>   
+                                           
+                                                
+                                        
+                                    </div>
+                                
+                            </div>
+                        </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+ 
+ 
+</html>

@@ -1,0 +1,165 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+<f:section name="Main">
+
+<div id="map"></div>
+   <div class="homepage">
+      <div class="boxCol0">
+         <f:cObject typoscriptObjectPath="lib.dynamicContent" data="{colPos: '0'}" />
+      </div>
+
+
+      <f:cObject typoscriptObjectPath="lib.dynamicContent" data="{colPos: '90'}" />
+
+      <div class="container">
+
+
+
+         <!--TYPO3SEARCH_begin-->
+         <f:if condition="{f:cObject(typoscriptObjectPath:'lib.dynamicContent',data:'{colPos:1}')}!=''">
+            <div class="row">
+                
+                  <div class="col-lg-4 col-md-4 col-sm-4 boxCol1">
+                     <div class="box1">
+                        <f:cObject typoscriptObjectPath="lib.dynamicContent" data="{colPos: '1'}" />
+                     </div>
+                  </div>
+                  <div class="col-lg-4 col-md-4 col-sm-4 boxCol2">
+                     <div class="box2">
+                        <f:cObject typoscriptObjectPath="lib.dynamicContent" data="{colPos: '2'}" />
+                     </div>
+                  </div>
+                  <div class="col-lg-4 col-md-4 col-sm-4 boxCol3">
+                     <div class="box3">
+                        <f:cObject typoscriptObjectPath="lib.dynamicContent" data="{colPos: '3'}" />
+                     </div>
+                  </div>
+                
+            </div>
+         </f:if>
+
+         <f:if condition="{f:cObject(typoscriptObjectPath:'lib.dynamicContent',data:'{colPos:4}')}!=''">
+            <div class="row">
+               <div class="col-lg-8 col-md-8 col-sm-8 boxCol4">
+                  <f:cObject typoscriptObjectPath="lib.dynamicContent" data="{colPos: '4'}" />
+               </div>
+               <div class="col-lg-4 col-md-4 col-sm-4 boxCol5">
+                  <f:cObject typoscriptObjectPath="lib.dynamicContent" data="{colPos: '5'}" />
+               </div>
+            </div>
+         </f:if>
+
+         <f:if condition="{f:cObject(typoscriptObjectPath:'lib.dynamicContent',data:'{colPos:6}')}!=''">
+            <div class="row">
+               <div class="col-lg-12 col-md-12 col-sm-12 boxCol6">
+                  <f:cObject typoscriptObjectPath="lib.dynamicContent" data="{colPos: '6'}" />
+               </div>
+            </div>
+         </f:if>
+
+         <f:if condition="{f:cObject(typoscriptObjectPath:'lib.dynamicContent',data:'{colPos:7}')}!=''">
+            <div class="row">
+               <div class="col-lg-6 col-md-6 col-sm-12 boxCol7">
+                  <f:cObject typoscriptObjectPath="lib.dynamicContent" data="{colPos: '7'}" />
+               </div>
+               <div class="col-lg-6 col-md-6 col-sm-12 boxCol8">
+                  <f:cObject typoscriptObjectPath="lib.dynamicContent" data="{colPos: '8'}" />
+               </div>
+            </div>
+         </f:if>
+
+         <f:if condition="{f:cObject(typoscriptObjectPath:'lib.dynamicContent',data:'{colPos:9}')}!=''">
+            <div class="row">
+               <div class="col-lg-12 col-md-12 col-sm-12 boxCol9">
+                  <f:cObject typoscriptObjectPath="lib.dynamicContent" data="{colPos: '9'}" />
+               </div>
+            </div>
+         </f:if>
+
+
+         <!--TYPO3SEARCH_end-->
+      </div>
+
+   </div>
+
+    
+ <script async defer 
+     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCw0-tcufRzzmpRdtDyObsbfmWqJo3fAqY&callback=initMap&libraries=geometry">
+</script>
+   <script>
+    // Google Maps Initialisierung
+    function initMap() {
+        // HIER DEINE KOORDINATEN EINTRAGEN
+        const location = {
+            lat: 52.5200, // Beispiel: Berlin - HIER DEINE LATITUDE EINTRAGEN
+            lng: 13.4050  // Beispiel: Berlin - HIER DEINE LONGITUDE EINTRAGEN
+        };
+
+        // Karte erstellen
+        const map = new google.maps.Map(document.getElementById("map"), {
+            zoom: 15, // Zoom-Level (1-20, höher = näher)
+            center: location,
+            mapTypeId: google.maps.MapTypeId.ROADMAP, // ROADMAP, SATELLITE, HYBRID, TERRAIN
+            
+            // Optionale Styling-Optionen
+            styles: [
+                {
+                    featureType: "poi",
+                    elementType: "labels",
+                    stylers: [{ visibility: "off" }] // POI-Labels ausblenden
+                }
+            ]
+        });
+
+        // Marker erstellen
+        const marker = new google.maps.Marker({
+            position: location,
+            map: map,
+            title: "Mein Standort", // Tooltip beim Hover
+            
+            // Optionale Marker-Anpassungen
+            animation: google.maps.Animation.DROP, // DROP oder BOUNCE
+            
+            // Custom Icon (optional)
+            // icon: {
+            //     url: 'path/to/your/custom-icon.png',
+            //     scaledSize: new google.maps.Size(40, 40)
+            // }
+        });
+
+        // Info-Fenster (optional)
+        const infoWindow = new google.maps.InfoWindow({
+            content: `
+                <div style="padding: 10px;">
+                    <h3>Mein Standort</h3>
+                    <p>Hier findest du uns!</p>
+                    <p><strong>Koordinaten:</strong><br>
+                    Lat: ${location.lat}<br>
+                    Lng: ${location.lng}</p>
+                </div>
+            `
+        });
+
+        // Info-Fenster beim Klick auf Marker öffnen
+        marker.addListener("click", () => {
+            infoWindow.open(map, marker);
+        });
+
+        // Optional: Info-Fenster direkt anzeigen
+        // infoWindow.open(map, marker);
+    }
+
+    // Fehlerbehandlung falls Google Maps nicht geladen werden kann
+    window.gm_authFailure = function() {
+        document.getElementById('map').innerHTML = 
+            '<div style="padding: 20px; text-align: center; color: red;">' +
+            '<h3>Google Maps konnte nicht geladen werden</h3>' +
+            '<p>Bitte überprüfe deinen API-Schlüssel.</p>' +
+            '</div>';
+    };
+</script>
+
+ 
+</f:section>
+
+</html>

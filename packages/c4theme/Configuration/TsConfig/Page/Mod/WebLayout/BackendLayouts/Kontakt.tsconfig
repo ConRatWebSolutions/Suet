@@ -1,0 +1,131 @@
+mod {
+    web_layout {
+        BackendLayouts {
+            kontakt  {
+                title = Kontakt
+                config {
+      backend_layout {
+        colCount = 6
+        rowCount = 8
+        rows {
+          1 {
+            columns {
+              1 {
+                name = Spalte
+                colspan = 6
+                colPos = 0
+              }
+            }
+          }
+          2 {
+            columns {
+              1 {
+                name = Spalte
+                colspan = 2
+                colPos = 1
+              }
+              2 {
+                name = Spalte
+                colspan = 2
+                colPos = 2
+              }
+              3 {
+                name = Spalte
+                colspan = 2
+                colPos = 3
+              }
+            }
+          }
+          3 {
+            columns {
+              1 {
+                name = Spalte
+                colspan = 4
+                colPos = 4
+              }
+              2 {
+                name = Spalte
+                colspan = 2
+                colPos = 5
+              }
+            }
+          }
+          4 {
+            columns {
+              1 {
+                name = Spalte
+                colspan = 6
+                colPos = 6
+              }
+            }
+          }
+          5 {
+            columns {
+              1 {
+                name = Spalte
+                colspan = 3
+                colPos = 7
+              }
+              2 {
+                name = Spalte
+                colspan = 3
+                colPos = 8
+              }
+            }
+          }
+          6 {
+            columns {
+              1 {
+                name = Footer
+                colspan = 6
+                colPos = 9
+              }
+            }
+          }
+          7 {
+            columns {
+              1 {
+                name = Spalte
+                colspan = 2
+                colPos = 10
+              }
+              2 {
+                name = Spalte
+                colspan = 2
+                colPos = 11
+              }
+              3 {
+                name = Spalte
+                colspan = 2
+                colPos = 12
+              }
+            }
+          }
+          8 {
+            columns {
+              1 {
+                name = Spalte
+                colspan = 2
+                colPos = 13
+              }
+              2 {
+                name = Spalte
+                colspan = 2
+                colPos = 14
+              }
+              3 {
+                name = Spalte
+                colspan = 2
+                colPos = 15
+              }
+            }
+          }
+        }
+      }
+    }
+    icon = EXT:c4theme/Resources/Public/Icons/BackendLayouts/example.svg
+          }
+        }
+    }
+}
+

@@ -1,0 +1,206 @@
+######################
+#### DEPENDENCIES ####
+######################
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:bootstrap_package/Configuration/TypoScript/setup.typoscript">
+
+######################
+#### CONTENT ELEMENTS ####
+######################
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:c4theme/Configuration/TypoScript/ContentElements/VideoContent.typoscript">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:c4theme/Configuration/TypoScript/ContentElements/TeamContent.typoscript">
+
+ 
+
+
+##############
+#### PAGE ####
+##############
+page {
+    config {
+            pageRendererTemplateFile =  EXT:c4theme/Resources/Private/Layouts/PageRenderer.html
+            contentObjectExceptionHandler = 0   
+            index_enable = 1
+            language = de
+            spamProtectEmailAddresses = 2
+             spamProtectEmailAddresses_atSubst = (at)	 
+			
+         }
+
+    includeCSS {
+        
+ 
+        menue      = EXT:c4theme/Resources/Public/Css/menue.css
+       
+        app      = EXT:c4theme/Resources/Public/Css/app.css
+         
+        
+       
+       
+    }
+
+    includeJSLibs {
+
+    }
+
+    includeJS {
+          jq          = EXT:c4theme/Resources/Public/JavaScript/Src/jquery.js
+         
+    }
+
+    includeJSFooterlibs {
+            
+    }
+
+    includeJSFooter {
+       
+         main          = EXT:c4theme/Resources/Public/JavaScript/Src/main.js
+         
+         
+        
+       
+    }
+
+    typeNum = 0
+    shortcutIcon = /fileadmin/webdaten/icons/favicon.ico
+
+
+    10 = FLUIDTEMPLATE
+    10 {
+       
+         templateName = TEXT
+         templateName {
+            cObject = TEXT
+            cObject {
+                data = pagelayout
+                required = 1
+                case = uppercamelcase
+                split {
+                    token = pagets__
+                    cObjNum = 1
+                    1.current = 1
+                }
+            }
+            ifEmpty = Default
+        }
+            variables{
+              
+    		 FOOTERDATA = CONTENT
+			 FOOTERDATA {
+				table = tt_content
+				select {
+					pidInList = 1   #Seiten-ID
+					orderBy = sorting
+					where = colPos= 99
+					max = 1
+					languageField = sys_language_uid
+				}
+				 
+			}  
+            SIDEBAR = CONTENT
+			SIDEBAR {
+				table = tt_content
+				select {
+					pidInList = 1   #Seiten-ID
+					orderBy = sorting
+					where = colPos= 20
+					max = 10
+					languageField = sys_language_uid
+				}
+				 
+			}   
+            
+            
+            }
+
+		dataProcessing {
+            22 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
+            22 {
+                levels = 4
+                includeSpacer = 0
+                as = crmainmenu
+                special = directory
+                special.value = 2
+            }  
+                   
+            # Eigene Nummer (45), damit kein Merge mit Bootstrap Package 30 = Breadcrumb (special, includeNotInMenu würden InvalidArgumentException auslösen)
+            45 = TYPO3\CMS\Frontend\DataProcessing\LanguageMenuProcessor
+            45 {
+                languages = auto
+                as = languageNavigation
+            }
+            31 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
+            31 {
+                levels = 4
+                includeSpacer = 0
+                as = topmenu 
+                special = directory
+                special.value = 3
+            }          
+
+            35 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
+            35 {
+                levels = 4
+                includeSpacer = 0
+                as = footermenu 
+                special = directory
+                special.value = 31
+            }
+   
+            100 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
+            100 {
+                special = rootline
+                special.range = 1|-1
+                as = breadcrumb
+            }
+            500 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
+            500 {
+                references {
+               	table = pages
+				uid.data = TSFE:id
+				fieldName = media
+                    }
+                    as = crmediaFiles
+                }
+
+       
+                    
+        }
+
+
+
+        }
+        headerData{
+    
+         1 = TEXT
+         1.value (
+ <script type="text/javascript" data-cmp-ab="1" src="https://cdn.consentmanager.net/delivery/autoblocking/4e034792c448.js" data-cmp-host="b.delivery.consentmanager.net" data-cmp-cdn="cdn.consentmanager.net" data-cmp-codesrc="0"></script>
+        ) 
+        5 = TEXT
+        5.value(
+            
+
+	  	<link rel="apple-touch-icon" sizes="57x57" href="/fileadmin/webdaten/icons/apple-icon-57x57.png">
+		<link rel="apple-touch-icon" sizes="60x60" href="/fileadmin/webdaten/icons/apple-icon-60x60.png">
+		<link rel="apple-touch-icon" sizes="72x72" href="/fileadmin/webdaten/icons/apple-icon-72x72.png">
+		<link rel="apple-touch-icon" sizes="76x76" href="/fileadmin/webdaten/icons/apple-icon-76x76.png">
+		<link rel="apple-touch-icon" sizes="114x114" href="/fileadmin/webdaten/icons/apple-icon-114x114.png">
+		<link rel="apple-touch-icon" sizes="120x120" href="/fileadmin/webdaten/icons/apple-icon-120x120.png">
+		<link rel="apple-touch-icon" sizes="144x144" href="/fileadmin/webdaten/icons/apple-icon-144x144.png">
+		<link rel="apple-touch-icon" sizes="152x152" href="/fileadmin/webdaten/icons/apple-icon-152x152.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/fileadmin/webdaten/icons/apple-icon-180x180.png">
+		<link rel="icon" type="image/png" sizes="192x192"  href="/fileadmin/webdaten/icons/android-icon-192x192.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="/fileadmin/webdaten/icons/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="96x96" href="/fileadmin/webdaten/icons/favicon-96x96.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/fileadmin/webdaten/icons/favicon-16x16.png">
+		<link rel="manifest" href="/fileadmin/webdaten/icons/manifest.json">
+		<meta name="msapplication-TileColor" content="#ffffff">
+		<meta name="msapplication-TileImage" content="/fileadmin/webdaten/icons/ms-icon-144x144.png">
+		<meta name="theme-color" content="#ffffff">
+
+
+        )
+    }
+}
+
+ 
+ 

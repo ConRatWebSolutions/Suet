@@ -1,0 +1,22 @@
+tt_content {
+    examples_dataprocdb =< lib.contentElement
+    examples_dataprocdb {
+        file = EXT:c4theme/Resources/Private/Templates/ContentObjects/MyContent.html
+        
+        dataProcessing.10 = database-query
+        dataProcessing.10 {
+            if.isTrue.field = pages
+            table = tt_content
+            orderBy = title
+            pidInList.field = pages
+            as = mainSlider
+            
+            dataProcessing {
+                10 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
+                10 {
+                    references.fieldName = image
+                }
+            }
+        }
+    }
+}

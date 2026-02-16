@@ -1,0 +1,75 @@
+######################
+#### DEPENDENCIES ####
+######################
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:bootstrap_package/Configuration/TypoScript/constants.typoscript">
+
+
+############
+### PAGE ###
+############
+page {
+    logo {
+        file = EXT:c4theme/Resources/Public/Images/logo.svg
+        fileInverted = EXT:c4theme/Resources/Public/Images/logo-inverted.svg
+        height = 52
+        width = 192
+        alt = c4theme
+        linktitle = c4theme
+    }
+    favicon {
+        file  = EXT:c4theme/Resources/Public/Icons/favicon.ico
+    }
+    fluidtemplate {
+        layoutRootPath   = EXT:c4theme/Resources/Private/Layouts/Page/
+        partialRootPath  = EXT:c4theme/Resources/Private/Partials/Page/
+        templateRootPath = EXT:c4theme/Resources/Private/Templates/Page/
+    }
+}
+
+
+##################
+### EXTENSIONS ###
+##################
+ plugin.tx_news {
+    view {
+        
+        partialRootPath = EXT:c4theme/Resources/Private/Partials/News/
+        templateRootPath = EXT:c4theme/Resources/Private/Templates/News/
+    }
+}
+
+plugin.bootstrap_package {
+    view {
+        layoutRootPath = EXT:c4theme/Resources/Private/Layouts/
+        partialRootPath = EXT:c4theme/Resources/Private/Partials/
+        templateRootPath = EXT:c4theme/Resources/Private/Templates/
+    }
+}
+
+
+########################
+### CONTENT ELEMENTS ###
+########################
+plugin.bootstrap_package_contentelements {
+    view {
+        layoutRootPath = EXT:c4theme/Resources/Private/Layouts/ContentElements/
+        partialRootPath = EXT:c4theme/Resources/Private/Partials/ContentElements/
+        templateRootPath = EXT:c4theme/Resources/Private/Templates/ContentElements/
+    }
+}
+
+
+################################
+### BOOTSTRAP SCSS CONSTANTS ###
+################################
+plugin.bootstrap_package.settings.scss {
+    primary = #eb3e4a
+    secondary = #013859
+}
+
+ 
+
+
+
+
+ 

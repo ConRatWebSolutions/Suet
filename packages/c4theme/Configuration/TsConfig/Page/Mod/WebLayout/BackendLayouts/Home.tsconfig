@@ -1,0 +1,121 @@
+mod {
+    web_layout {
+        BackendLayouts {
+            homepage {
+                title = Homepage
+                config {
+        backend_layout {
+        colCount = 12
+        rowCount = 8
+        rows {
+          1 {
+            columns {
+              1 {
+                name = Menü
+                colspan = 3
+                rowspan = 7
+                colPos = 20
+              }
+              2 {
+                name = Spalte 0
+                colspan = 9
+                colPos = 0
+              }
+            }
+          }
+          2 {
+            columns {
+              1 {
+                name = Spalte 1
+                colspan = 3
+                colPos = 1
+              }
+              2 {
+                name = Spalte 2
+                colspan = 6
+                colPos = 2
+              }
+            }
+          }
+          3 {
+            columns {
+              1 {
+                name = Spalte 3
+                colspan = 9
+                colPos = 3
+              }
+            }
+          }
+          4 {
+            columns {
+              1 {
+                name = Spalte 4
+                colspan = 4
+                colPos = 4
+              }
+              2 {
+                name = Spalte 5
+                colspan = 5
+                colPos = 5
+              }
+            }
+          }
+          5 {
+            columns {
+              1 {
+                name = Spalte 7
+                colspan = 9
+                colPos = 7
+              }
+            }
+          }
+          6 {
+            columns {
+              1 {
+                name = Spalte 8
+                colspan = 6
+                colPos = 8
+              }
+              2 {
+                name = Spalte  9
+                colspan = 3
+                colPos = 9
+              }
+            }
+          }
+          7 {
+            columns {
+              1 {
+                name = Spalte 10
+                colspan = 9
+                colPos = 10
+              }
+            }
+          }
+          8 {
+            columns {
+              1 {
+                name = Footer
+                colspan = 9
+                colPos = 99
+              }
+              2 {
+                name = 9x7
+                colspan = 3
+              }
+            }
+          }
+        }
+      }             
+
+
+
+
+
+
+                }
+                icon = EXT:cr_templates/Resources/Public/Images/BackendLayouts/default.png
+            }
+        }
+    }
+}

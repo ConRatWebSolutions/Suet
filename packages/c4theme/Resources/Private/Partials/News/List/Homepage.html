@@ -1,0 +1,21 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+	  xmlns:n="http://typo3.org/ns/GeorgRinger/News/ViewHelpers"
+	  data-namespace-typo3-fluid="true">
+<div class=" item   {f:if(condition:'{iterator.isFirst}',then:'first ')}{f:if(condition:'{iterator.isLast}',then:'last ')}{f:if(condition:'{iterator.isOdd}',then:'odd ',else:'even ')}{f:if(condition: newsItem.istopnews, then: ' topnews')}" itemscope="itemscope" itemtype="http://schema.org/Article">
+    		 <span class="news-list-date">
+				 
+					<f:format.date format="%d. %B %Y">{newsItem.datetime}</f:format.date>
+				 
+			</span>
+	 <n:link newsItem="{newsItem}" settings="{settings}" title="{newsItem.title}" class="linkboxed">{newsItem.title}</n:link>
+
+	  
+		 
+ 
+ 
+
+
+
+ 
+</div>
+</html>

@@ -1,0 +1,36 @@
+<ul class="nav">
+    <f:for each="{crmainmenu}" as="menu">
+        <li class="{f:if(condition: menu.children, then: 'dropdown')}">
+            <a href="{menu.link}">{menu.title}</a>
+
+            <f:if condition="{menu.children}">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><b
+                        class="caret"></b></a>
+                <ul class="nav-ebene-zwei">
+                    <f:for each="{menu.children}" as="children">
+                        <li><a href="{children.link}" title="{children.title}"
+                                class="{f:if(condition:'{children.active}',then:'active')}">{children.title}</a></li>
+                    </f:for>
+                </ul>
+            </f:if>
+        </li>
+
+    </f:for>
+    <f:for each="{topmenu}" as="menu">
+        <li class="{f:if(condition: menu.children, then: 'dropdown')}">
+            <a href="{menu.link}">{menu.title}</a>
+
+            <f:if condition="{menu.children}">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><b
+                        class="caret"></b></a>
+                <ul class="nav-ebene-zwei">
+                    <f:for each="{menu.children}" as="children">
+                        <li><a href="{children.link}" title="{children.title}"
+                                class="{f:if(condition:'{children.active}',then:'active')}">{children.title}</a></li>
+                    </f:for>
+                </ul>
+            </f:if>
+        </li>
+
+    </f:for>
+</ul>

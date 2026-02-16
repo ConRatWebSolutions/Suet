@@ -1,0 +1,93 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<img class="visible-xs" src="/fileadmin/user_upload/WebDaten/logo.png"
+  alt="SUET Saat- und Erntetechnik GmbH in Eschwege">
+<div class="header hidden-xs">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-4">
+        <a href="/"><img class="logo hidden-xs" src="/fileadmin/user_upload/WebDaten/logo.png"
+            alt="SUET Saat- und Erntetechnik GmbH in Eschwege"></a>
+      </div>
+      <div class="col-sm-8 no-print">
+        <div class="suche  ">
+
+
+          <form id="tx_indexedsearch"
+            action="/suche?tx_indexedsearch_pi2%5Baction%5D=search&amp;tx_indexedsearch_pi2%5Bcontroller%5D=Search&amp;cHash=335e25457194ea4b01cefc60b3ed0475"
+            method="post">
+            <div>
+              <input type="hidden" name="tx_indexedsearch_pi2[__referrer][@extension]" value="IndexedSearch">
+              <input type="hidden" name="tx_indexedsearch_pi2[__referrer][@controller]" value="Search">
+              <input type="hidden" name="tx_indexedsearch_pi2[__referrer][@action]" value="form">
+              <input type="hidden" name="tx_indexedsearch_pi2[__referrer][arguments]"
+                value="YTowOnt9455b43755e8de54b82f39dab83f0a02959c4814e">
+              <input type="hidden" name="tx_indexedsearch_pi2[__referrer][@request]"
+                value="{&quot;@extension&quot;:&quot;IndexedSearch&quot;,&quot;@controller&quot;:&quot;Search&quot;,&quot;@action&quot;:&quot;form&quot;}18d6078856827c1f72f5f61a40df767840bc23d9">
+              <input type="hidden" name="tx_indexedsearch_pi2[__trustedProperties]"
+                value="{&quot;search&quot;:{&quot;_sections&quot;:1,&quot;_freeIndexUid&quot;:1,&quot;pointer&quot;:1,&quot;ext&quot;:1,&quot;searchType&quot;:1,&quot;defaultOperand&quot;:1,&quot;mediaType&quot;:1,&quot;sortOrder&quot;:1,&quot;group&quot;:1,&quot;languageUid&quot;:1,&quot;desc&quot;:1,&quot;numberOfResults&quot;:1,&quot;extendedSearch&quot;:1,&quot;sword&quot;:1,&quot;submitButton&quot;:1}}e98040cd156410c023467c8eea475ea6058bc6c9">
+            </div>
+
+            <div class="tx-indexedsearch-hidden-fields">
+              <input type="hidden" name="tx_indexedsearch_pi2[search][_sections]" value="0">
+              <input id="tx_indexedsearch_freeIndexUid" type="hidden" name="tx_indexedsearch_pi2[search][_freeIndexUid]"
+                value="_">
+              <input id="tx_indexedsearch_pointer" type="hidden" name="tx_indexedsearch_pi2[search][pointer]" value="0">
+              <input type="hidden" name="tx_indexedsearch_pi2[search][ext]" value="">
+              <input type="hidden" name="tx_indexedsearch_pi2[search][searchType]" value="1">
+              <input type="hidden" name="tx_indexedsearch_pi2[search][defaultOperand]" value="0">
+              <input type="hidden" name="tx_indexedsearch_pi2[search][mediaType]" value="-1">
+              <input type="hidden" name="tx_indexedsearch_pi2[search][sortOrder]" value="rank_flag">
+              <input type="hidden" name="tx_indexedsearch_pi2[search][group]" value="">
+              <input type="hidden" name="tx_indexedsearch_pi2[search][languageUid]" value="0">
+              <input type="hidden" name="tx_indexedsearch_pi2[search][desc]" value="">
+              <input type="hidden" name="tx_indexedsearch_pi2[search][numberOfResults]" value="10">
+              <input type="hidden" name="tx_indexedsearch_pi2[search][extendedSearch]" value="">
+            </div>
+
+
+            <input placeholder="Suche" id="tx-indexedsearch-searchbox-sword"
+              class="tx-indexedsearch-searchbox-sword sword" type="text" name="tx_indexedsearch_pi2[search][sword]"
+              value="">
+            <input id="tx-indexedsearch-searchbox-button-submit" class="btn btn-primary hidden" type="submit"
+              value="Suchen" name="tx_indexedsearch_pi2[search][submitButton]">
+
+
+          </form>
+
+
+
+          <f:render partial="Navigation/LanguageSwitch" arguments="{_all}" />
+        </div>
+
+        <f:render partial="Navigation/TopMenue" arguments="{_all}" />
+
+      </div>
+    </div>
+  </div>
+</div>
+<div class="navbar navbar-default navbar-static-top visible-xs visible-sm" role="navigation">
+  <div class="container">
+
+
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-target="#navbar-collapse-mobile" aria-expanded="false"
+        aria-controls="navbar-collapse-mobile">
+        <span class="sr-only">Menü öffnen</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand visible-xs" href="/">Startseite</a>
+    </div>
+    <div id="navbar-collapse-mobile" class="navbar-collapse collapse">
+
+      <f:render partial="Navigation/MobMainmenu" arguments="{_all}" />
+
+
+    </div>
+
+  </div>
+</div>
+
+
+</html>

@@ -1,0 +1,19 @@
+<div id="breadcrumbs" class="hidden-xs">
+
+    <ul id="breadcrumb">
+        <li> Aktuelle Seite: <a class="pathway" href="/">Startseite</a></li>
+        <f:for each="{breadcrumb}" as="item">
+            <li class="breadcrumb-item{f:if(condition: item.current, then: ' active')}" {f:if(condition: item.current,
+                then: 'aria-current="page"' )}>
+                <f:if condition="{item.current}">
+                    <f:then>{item.title}</f:then>
+                    <f:else>
+                        <a class="crumb" href="{item.link}">{item.title}</a>
+                    </f:else>
+                </f:if>
+            </li>
+        </f:for>
+    </ul>
+
+
+</div>

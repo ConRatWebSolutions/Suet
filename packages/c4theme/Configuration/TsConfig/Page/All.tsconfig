@@ -1,0 +1,8 @@
+#
+# PageTS for c4theme
+#
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:c4theme/Configuration/TsConfig/Page/RTE.tsconfig">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:c4theme/Configuration/TsConfig/Page/TCEFORM.tsconfig">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:c4theme/Configuration/TsConfig/Page/TCEMAIN.tsconfig">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:c4theme/Configuration/TsConfig/Page/Mod/WebLayout/BackendLayouts.tsconfig">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:c4theme/Configuration/TsConfig/Page/ContentElements/C4theme.tsconfig">

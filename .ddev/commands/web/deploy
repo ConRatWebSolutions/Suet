@@ -1,0 +1,52 @@
+#!/bin/bash
+
+set -eux
+
+# define target as array
+declare -A target
+
+# require constants
+targetDir=$(dirname "$0")/targets
+. "$targetDir"/"live"
+
+
+# Extract username from variable
+sshUser=${target[sshUser]}
+
+# Prompt user for confirmation
+read -p "Is the user  ${sshUser} correct? (ja/nein): " userInput
+
+# Checking user input
+if [ "$userInput" == "ja" ]; then
+    echo "User confirmed. Continue..."
+    echo "Use User: ${sshUser}"
+else
+    echo " User not confirmed. Script will be terminated."
+    exit 1
+fi
+
+# Backup erstellen vor dem Deploy
+echo "Erstelle Backup des Zielverzeichnisses..."
+backupTimestamp=$(date +"%Y%m%d_%H%M%S")
+backupDir="~/typo3_2026_backup_${backupTimestamp}"
+
+ 
+
+echo "Backup abgeschlossen. Starte Deploy..."
+
+# Deploy der Dateien
+rsync -avz --perms --delete config/ "${target[sshUser]}"@"${target[sshHost]}":~/typo3_2026/config
+rsync -avz --perms --delete packages/ "${target[sshUser]}"@"${target[sshHost]}":~/typo3_2026/packages
+ 
+rsync -avz --delete var/ "${target[sshUser]}"@"${target[sshHost]}":~/typo3_2026/var
+rsync -avz --delete vendor/ "${target[sshUser]}"@"${target[sshHost]}":~/typo3_2026/vendor
+rsync -avz --exclude 'fileadmin' public/ "${target[sshUser]}"@"${target[sshHost]}":~/typo3_2026/public
+
+# Setze Berechtigungen für CSS- und JS-Dateien
+echo "Setze Berechtigungen für Assets..."
+ssh -p "${target[sshPort]}" "${target[sshUser]}"@"${target[sshHost]}" "find ~/typo3_2026/packages -type f \( -name '*.css' -o -name '*.js' \) -exec chmod 644 {} \;"
+ssh -p "${target[sshPort]}" "${target[sshUser]}"@"${target[sshHost]}" "find ~/typo3_2026/packages -type d -exec chmod 755 {} \;"
+ssh -p "${target[sshPort]}" "${target[sshUser]}"@"${target[sshHost]}" "chmod -R 755 ~/typo3_2026/packages/gbtheme/Resources/Public 2>/dev/null || true"
+ssh -p "${target[sshPort]}" "${target[sshUser]}"@"${target[sshHost]}" "chmod -R 755 ~/typo3_2026/packages/*/Resources/Public 2>/dev/null || true"
+
+echo "Deploy abgeschlossen. Backup verfügbar in: ${backupDir}"

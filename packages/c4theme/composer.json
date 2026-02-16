@@ -1,0 +1,23 @@
+{
+    "name": "conrat/c4theme",
+    "type": "typo3-cms-extension",
+    "description": "C4 Theme",
+    "homepage": "https://www.conrat.de",
+    "license": ["GPL-2.0-or-later"],
+    "keywords": ["TYPO3 CMS"],
+    "version": "1.0.2",
+    "require": {
+        "typo3/cms-core": "^13.0",
+        "bk2k/bootstrap-package": "^15.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Conrat\\C4theme\\": "Classes/"
+        }
+    },
+    "extra": {
+        "typo3/cms": {
+            "extension-key": "c4theme"
+        }
+    }
+}

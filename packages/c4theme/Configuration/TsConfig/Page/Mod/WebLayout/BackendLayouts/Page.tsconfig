@@ -1,0 +1,126 @@
+mod {
+    web_layout {
+        BackendLayouts {
+            page {
+                title = normale Seite
+                config {
+                   backend_layout {
+        colCount = 12
+        rowCount = 8
+        rows {
+          1 {
+            columns {
+              1 {
+                name = Menü
+                colspan = 3
+                rowspan = 7
+                colPos = 20
+              }
+              2 {
+                name = Spalte
+                colspan = 9
+                colPos = 0
+              }
+            }
+          }
+          2 {
+            columns {
+              1 {
+                name = Spalte
+                colspan = 3
+                colPos = 1
+              }
+              2 {
+                name = Spalte
+                colspan = 6
+                colPos = 2
+              }
+            }
+          }
+          3 {
+            columns {
+              1 {
+                name = Spalte
+                colspan = 9
+                colPos = 3
+              }
+            }
+          }
+          4 {
+            columns {
+              1 {
+                name = Spalte
+                colspan = 3
+                colPos = 4
+              }
+              2 {
+                name = Spalte
+                colspan = 3
+                colPos = 5
+              }
+              3 {
+                name = Spalte
+                colspan = 3
+                colPos = 6
+              }
+            }
+          }
+          5 {
+            columns {
+              1 {
+                name = Spalte
+                colspan = 3
+                colPos = 11
+              }
+              2 {
+                name = Spalte
+                colspan = 3
+                colPos = 12
+              }
+              3 {
+                name = Spalte
+                colspan = 3
+                colPos = 13
+              }
+            }
+          }
+          6 {
+            columns {
+              1 {
+                name = Spalte
+                colspan = 9
+                colPos = 7
+              }
+            }
+          }
+          7 {
+            columns {
+              1 {
+                name = Spalte
+                colspan = 6
+                colPos = 8
+              }
+              2 {
+                name = Spalte
+                colspan = 6
+                colPos = 9
+              }
+            }
+          }
+          8 {
+            columns {
+              1 {
+                name = Spalte
+                colspan = 12
+                colPos = 10
+              }
+            }
+          }
+        }
+      }
+                }
+                icon = EXT:cr_templates/Resources/Public/Images/BackendLayouts/subpage.png
+            }
+        }
+    }
+}

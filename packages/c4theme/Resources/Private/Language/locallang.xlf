@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="messages" product-name="c4theme">
+        <header>
+            <authorName>Martin</authorName>
+            <authorEmail>martin@m.de</authorEmail>
+        </header>
+        <body>
+            <trans-unit id="finisher.honeypot.title">
+                <source>Honeypot Protection</source>
+            </trans-unit>
+            <trans-unit id="finisher.honeypot.field">
+                <source>Honeypot Field Name</source>
+            </trans-unit>
+            <trans-unit id="validator.captcha.notValid">
+                <source>Please enter the correct captcha code.</source>
+                <target>Bitte geben Sie den korrekten Captcha-Code ein.</target>
+            </trans-unit>
+            <trans-unit id="readmore.label">
+                <source>Read more</source>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

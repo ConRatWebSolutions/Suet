@@ -1,0 +1,52 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:bk2k="http://typo3.org/ns/BK2K/BootstrapPackage/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+<f:section name="Main">
+ 
+    <f:if condition="{records}">
+        
+        
+        
+      <f:if condition="{data.frame_class} == 'teaser-1'">
+          <f:then>
+                 <f:render partial="Card/teaser-1" arguments="{_all}" />
+          </f:then>
+         <f:else> 
+             <f:if condition="{data.frame_class} == 'teaser-2'">
+              <f:then>
+                     <f:render partial="Card/teaser-2" arguments="{_all}" />
+              </f:then>
+             <f:else> 
+                <f:if condition="{data.frame_class} == 'teaser-6'">
+                    <f:then>
+                           <f:render partial="Card/teaser-6" arguments="{_all}" />
+                    </f:then>
+                   <f:else>  
+             
+
+
+                                 <f:render partial="Card/default" arguments="{_all}" />
+             
+             </f:else> 
+            </f:if> 
+        </f:else>    
+        </f:if>  
+             
+             
+ 
+         </f:else> 
+    </f:if>
+</f:if>
+</f:section>
+<f:section name="LinkWrap">
+
+    <f:if condition="{link}">
+        <f:then>
+            <f:link.typolink parameter="{link}" title="{linkTitle -> f:format.trim()}">{content -> f:format.raw()}</f:link.typolink>
+        </f:then>
+        <f:else>
+            {content -> f:format.raw()}
+        </f:else>
+    </f:if>
+
+</f:section>
+</html>

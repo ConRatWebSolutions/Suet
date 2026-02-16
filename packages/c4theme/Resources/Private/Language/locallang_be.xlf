@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+    <file source-language="en" datatype="plaintext" original="messages" date="2024-01-22UTC14:47:100">
+        <header>
+            <authorName>Martin</authorName>
+            <authorEmail>martin@m.de</authorEmail>
+        </header>
+        <body>
+            <trans-unit id="backend_layout.example">
+                <source>Example</source>
+            </trans-unit>
+            <trans-unit id="backend_layout.column.normal">
+                <source>Normal</source>
+            </trans-unit>
+            <trans-unit id="content_group.c4theme">
+                <source>C4theme</source>
+            </trans-unit>
+            <trans-unit id="content_element.video_content">
+                <source>Video</source>
+            </trans-unit>
+            <trans-unit id="content_element.video_content.description">
+                <source>YouTube oder lokales Video mit Vorschaubild</source>
+            </trans-unit>
+            <trans-unit id="video_content.preview_image">
+                <source>Vorschaubild</source>
+            </trans-unit>
+            <trans-unit id="video_content.youtube_id">
+                <source>YouTube Video ID</source>
+            </trans-unit>
+            <trans-unit id="content_element.team_content">
+                <source>Team / Mitarbeiter</source>
+            </trans-unit>
+            <trans-unit id="content_element.team_content.description">
+                <source>Team-Mitglied mit Name, Titel, Text und E-Mail</source>
+            </trans-unit>
+            <trans-unit id="team_content.title">
+                <source>Titel / Position</source>
+            </trans-unit>
+            <trans-unit id="team_content.email">
+                <source>E-Mail</source>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

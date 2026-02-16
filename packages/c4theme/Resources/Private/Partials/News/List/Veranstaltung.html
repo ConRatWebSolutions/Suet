@@ -1,0 +1,53 @@
+<div class="row veranstaltung">
+  <div class="col-md-4">
+
+        <div class="view overlay hm-white-slight">
+            <n:link newsItem="{newsItem}" settings="{settings}" title="{newsItem.title}">
+                <f:if condition="{newsItem.mediaPreviews}">
+                    <!-- media preview element -->
+                    <f:then>
+                        <f:alias map="{mediaElement: newsItem.mediaPreviews.0}">
+                            <f:if condition="{mediaElement.originalResource.type} == 2">
+                                <img src="{f:uri.image(image:mediaElement,width:707,height:416)}" class="img-responsive"/>
+                            </f:if>
+                            <f:if condition="{mediaElement.originalResource.type} == 4">
+                                <f:render partial="Detail/MediaVideo" arguments="{mediaElement: mediaElement}"/>
+                            </f:if>
+                            <f:if condition="{mediaElement.originalResource.type} == 5">
+                                <img src="{f:uri.image(image:mediaElement,width:707,height:416)}" class="img-responsive"/>
+                            </f:if>
+                        </f:alias>
+                    </f:then>
+                    <f:else>
+                        <f:if condition="{settings.displayDummyIfNoMedia}">
+                            <n:link newsItem="{newsItem}" settings="{settings}" title="{newsItem.title}">
+                                <img src="{settings.list.media.dummyImage}" title="" alt="" maxWidth="{f:if(condition: settings.media.maxWidth, then: settings.media.maxWidth, else: settings.list.media.image.maxWidth)}" maxHeight="{f:if(condition: settings.media.maxHeight, then: settings.media.maxHeight, else: settings.list.media.image.maxHeight)}" class="img-responsive"/>
+                            </n:link>
+                        </f:if>
+                    </f:else>
+                </f:if>
+            </n:link>
+        </div>
+    </div>
+    <div class="col-md-1"> </div>
+    <div class="col-md-7">
+        <div class="veranstaltunginner">
+            <span class="news-list-date">		 
+                <f:format.date format="%d. %B %Y - %H:%I">{newsItem.datetime}</f:format.date> Uhr
+           </span>
+            <h5 class="card-title">{newsItem.title}</h5>		
+            <n:removeMediaTags>
+            {newsItem.teaser -> f:format.raw()}
+            </n:removeMediaTags>			
+            <div class="card-btn  ">
+                <n:link newsItem="{newsItem}" settings="{settings}" title="{newsItem.title}" class="linkboxed">Weiterlesen</n:link>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+</div>
+<hr>

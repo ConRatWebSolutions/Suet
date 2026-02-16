@@ -1,0 +1,87 @@
+#!/bin/bash
+
+# saner programming env: these switches turn some bugs into errors
+set -ex
+
+# init
+targetDir=$(dirname "$0")/targets
+dataDir="/var/www/html/data/"   
+
+typeset -A target
+ 
+
+# check if param 1 is set
+if [ -z "$1" ];
+    then
+        environment="live"
+    else
+        environment=$1
+fi
+
+# require constants
+. "$targetDir"/"$environment"
+
+
+# Extract username from variable
+sshUser=${target[sshUser]}
+
+# Prompt user for confirmation
+read -p "Is the user  ${sshUser} correct? (ja/nein): " userInput
+
+# Checking user input
+if [ "$userInput" == "ja" ]; then
+    echo "User confirmed. Continue..."
+    echo "Use User: ${sshUser}"
+else
+    echo " User not confirmed. Script will be terminated."
+    exit 1
+fi
+
+
+
+
+
+
+# set date to curent date
+date=$(date +%Y-%m-%d_%H-%M-%S)
+
+# dump local db
+#mysqldump -h db -u db -pdb db | gzip -9 > "$dataDir$date"-db-local.sql.gz
+#zcat "$dataDir$date"-db-local.sql.gz | ssh -p "${target[sshPort]}" "${target[sshUser]}"@"${target[sshHost]}" "mysql -h ${target[mysqlHost]} -P ${target[mysqlPort]} -u ${target[mysqlUser]} -p'${target[mysqlPass]}' ${target[mysqlDatabase]}"
+
+mysqldump --skip-comments -h db -u db -pdb db >  "$dataDir$date-db-local.sql"
+sed '/\/\*!999999\\- enable the sandbox mode \*\//d'  "$dataDir$date-db-local.sql" | sed '/^\\-/d' >  "$dataDir$date-db.sql"
+rm "$dataDir$date-db-local.sql"
+
+# Debug-Ausgabe für den vollständigen Dateipfad
+echo "File path: $dataDir$date-db.sql"
+
+# Überprüfen, ob die Datei existiert
+if [ -f "$dataDir$date-db.sql" ]; then
+  echo "File exists"
+else
+  echo "File does not exist"
+fi
+
+
+# Kopiere die Datei auf den Server
+scp -P "${target[sshPort]}" "$dataDir$date-db.sql" "${target[sshUser]}@${target[sshHost]}:~/typo3_2026/"
+
+# MySQL-Passwort sicher über temporäre .my.cnf (keine Sonderzeichen in der Shell-Befehlszeile)
+# Passwort für .my.cnf in Anführungszeichen, " und \ escapen
+mysqlPassCnf=$(printf '%s' "${target[mysqlPass]}" | sed 's/\\/\\\\/g; s/"/\\"/g')
+localCnf=$(mktemp)
+remoteCnf="typo3_2026/.my.cnf.deploy.$$"
+cat > "$localCnf" << EOF
+[client]
+user = ${target[mysqlUser]}
+password = "$mysqlPassCnf"
+host = ${target[mysqlHost]}
+port = ${target[mysqlPort]}
+EOF
+scp -P "${target[sshPort]}" "$localCnf" "${target[sshUser]}@${target[sshHost]}:~/$remoteCnf"
+rm -f "$localCnf"
+
+ssh -p "${target[sshPort]}" "${target[sshUser]}@${target[sshHost]}" "mysql --defaults-extra-file=~/$remoteCnf ${target[mysqlDatabase]} < ~/typo3_2026/$date-db.sql; rm -f ~/$remoteCnf"
+
+ssh -p "${target[sshPort]}" "${target[sshUser]}@${target[sshHost]}" "rm ~/typo3_2026/$date-db.sql"

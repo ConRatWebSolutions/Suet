@@ -1,0 +1,37 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+  xmlns:bk2k="http://typo3.org/ns/BK2K/BootstrapPackage/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:if condition="{crmainmenu}">
+  <f:spaceless>
+    <nav>
+      <ul class="menu">
+        <f:for each="{crmainmenu}" as="mainnavigationItem" iteration="menuIterator">
+          <li
+            class="{f:if(condition: mainnavigationItem.current, then:' current active ')}{f:if(condition: mainnavigationItem.active, then:' level1-active')}{f:if(condition: menuIterator.isLast, then:' last')}{f:if(condition: mainnavigationItem.children, then:' has-sub')}">
+            <a href="{mainnavigationItem.link}" target="{mainnavigationItem.target}" title="{mainnavigationItem.title}"
+              class="{f:if(condition: mainnavigationItem.active, then:' active')}">
+              {mainnavigationItem.title}
+            </a>
+            <f:if condition="{mainnavigationItem.children}">
+              <div class="menu__arrow">
+                <i class="icon-arrow-down"></i>
+              </div>
+              <ul>
+                <f:for each="{mainnavigationItem.children}" as="child">
+                  <li class="level2 viewLevel1 {f:if(condition: child.active, then:' active')}">
+                    <a href="{child.link}" target="{child.target}" title="{child.title}"
+                      class="{f:if(condition: child.active, then:' dropdown-toggle active')}"
+                      data-toggle="{f:if(condition: child.active, then: 'dropdown')}">
+                      {child.title}
+                    </a>
+                  </li>
+                </f:for>
+              </ul>
+            </f:if>
+          </li>
+        </f:for>
+      </ul>
+    </nav>
+  </f:spaceless>
+</f:if>
+
+</html>

@@ -1,0 +1,30 @@
+base: 'https://www.suet.de/'
+baseVariants:
+  -
+    base: 'https://suet.ddev.site/'
+    condition: 'applicationContext == "Development"'
+languages:
+  -
+    title: deutsch
+    enabled: true
+    locale: de_DE.utf8
+    hreflang: ''
+    base: /
+    websiteTitle: ''
+    navigationTitle: ''
+    flag: de
+    languageId: 0
+  -
+    title: englisch
+    enabled: true
+    locale: en_GB.utf8
+    hreflang: ''
+    base: /en
+    websiteTitle: ''
+    navigationTitle: ''
+    fallbackType: strict
+    fallbacks: ''
+    flag: en-us-gb
+    languageId: 1
+rootPageId: 1
+websiteTitle: ''

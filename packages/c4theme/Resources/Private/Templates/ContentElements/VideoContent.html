@@ -1,0 +1,83 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<div class="video-content">
+    <f:if condition="{locVideo}">
+        <f:then>
+            <div class="video-content_video">
+                <f:if condition="{previewImage.0}">
+                    <a href="#video-modal-{data.uid}" class="video-content__trigger" data-bs-toggle="modal" data-bs-target="#video-modal-{data.uid}" aria-label="Video abspielen">
+                        <f:image image="{previewImage.0}" alt="{data.header}" />
+                    </a>
+                </f:if>
+            </div>
+            <div class="modal fade video-content__modal" id="video-modal-{data.uid}" tabindex="-1" aria-labelledby="video-modal-label-{data.uid}" aria-hidden="true" data-video-pause-on-close="1">
+                <div class="modal-dialog modal-lg modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h2 class="modal-title h5" id="video-modal-label-{data.uid}">{data.header}</h2>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Schließen"></button>
+                        </div>
+                        <div class="modal-body video-content__modal-body">
+                            <video controls preload="metadata" class="video-content__video-el">
+                                <f:for each="{locVideo}" as="videoFile">
+                                    <f:if condition="{videoFile.originalFile.extension} == 'mp4'">
+                                        <source src="{videoFile.originalFile.publicUrl}" type="video/mp4" />
+                                    </f:if>
+                                    <f:if condition="{videoFile.originalFile.extension} == 'webm'">
+                                        <source src="{videoFile.originalFile.publicUrl}" type="video/webm" />
+                                    </f:if>
+                                </f:for>
+                            </video>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </f:then>
+        <f:else>
+            <f:if condition="{data.tx_c4theme_youtube_id}">
+                <div class="video-content_video">
+                    <f:if condition="{previewImage.0}">
+                        <f:then>
+                            <a href="#video-modal-{data.uid}" class="video-content__trigger" data-bs-toggle="modal" data-bs-target="#video-modal-{data.uid}" aria-label="Video abspielen">
+                                <f:image image="{previewImage.0}" alt="{data.header}" />
+                            </a>
+                            <div class="modal fade video-content__modal video-content__modal--youtube" id="video-modal-{data.uid}" tabindex="-1" aria-labelledby="video-modal-label-{data.uid}" aria-hidden="true">
+                                <div class="modal-dialog modal-lg modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h2 class="modal-title h5" id="video-modal-label-{data.uid}">{data.header}</h2>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Schließen"></button>
+                                        </div>
+                                        <div class="modal-body video-content__modal-body video-content__modal-body--16-9">
+                                            <iframe data-embed-url="https://www.youtube-nocookie.com/embed/{data.tx_c4theme_youtube_id}" src="" title="{data.header}"
+                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                allowfullscreen></iframe>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </f:then>
+                        <f:else>
+                            <div class="video-content__embed">
+                                <iframe src="https://www.youtube-nocookie.com/embed/{data.tx_c4theme_youtube_id}"
+                                    title="{data.header}"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen></iframe>
+                            </div>
+                        </f:else>
+                    </f:if>
+                </div>
+            </f:if>
+        </f:else>
+    </f:if>
+    <f:if condition="{data.header} || {data.subheader}">
+        <div class="video-content__content">
+            <f:if condition="{data.header}">
+                <h3>{data.header}</h3>
+            </f:if>
+            <f:if condition="{data.subheader}">
+                <h4>{data.subheader}</h4>
+            </f:if>
+        </div>
+    </f:if>
+</div>
+</html>

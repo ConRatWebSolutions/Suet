@@ -1,0 +1,35 @@
+<div class="card-group-element card-group-element-align-{data.pi_flexform.align} card-group-element-columns-{data.pi_flexform.columns}">
+    <f:for each="{records}" as="item" iteration="iteration">
+        <div class="card-group-element-item"> 
+                  <div class="card   card-background-{item.data.link_class}" >
+                    
+                       <f:if condition="{item.data.link}">
+                          <div class="   text-center">
+                            <div class="btn btn-primary">
+                               
+                              <f:link.typolink parameter="{item.data.link}" title="{linkTitle -> f:format.trim()}">
+                                  <f:if condition="{item.linkIcon}">
+                                      <span class="btn-icon">
+                                          <bk2k:icon icon="{item.linkIcon}" />
+                                      </span>
+                                  </f:if>
+                                  <span class="  btn-tourbtn">
+                                      <f:if condition="{item.data.link_title} !=''">
+                                         <f:then>
+                                              {item.data.link_title}
+                                          </f:then>
+                                          <f:else>
+                                              {item.data.header}
+                                          </f:else>
+                                      </f:if>  
+                                  </span>
+                              </f:link.typolink>
+                          </div> 
+                        </div> 
+                      </f:if>
+                    
+                  </div>
+            
+              </div>
+    </f:for>
+    </div>
