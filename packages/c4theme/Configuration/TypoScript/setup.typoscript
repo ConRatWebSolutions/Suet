@@ -61,7 +61,7 @@ page {
     }
 
     typeNum = 0
-    shortcutIcon = /fileadmin/webdaten/icons/favicon.ico
+    shortcutIcon = fileadmin/webdaten/icons/favicon.ico
 
 
     10 = FLUIDTEMPLATE

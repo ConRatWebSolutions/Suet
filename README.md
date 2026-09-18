@@ -1,66 +1,70 @@
-# TYPO3 CMS Base Distribution
+# SUET TYPO3 Projekt
 
-Get going quickly with TYPO3 CMS.
+TYPO3 CMS Projekt für den SUET mit DDEV-Entwicklungsumgebung.
 
-## Prerequisites
+## Voraussetzungen
 
-* PHP 8.2
-* [Composer](https://getcomposer.org/download/)
+* [DDEV](https://ddev.readthedocs.io/en/stable/users/install/) installiert
+* Git installiert
 
-## Quickstart
+## Lokale Entwicklung einrichten
 
-* `composer create-project typo3/cms-base-distribution project-name ^13`
-* `cd project-name`
-
-Note that this distribution installs most, but not all of the TYPO3 CMS core extensions.
-Depending on your need you might also want to install other TYPO3 extensions from
-[packagist.org](https://packagist.org/?type=typo3-cms-framework).
-
-### Setup
-
-To start an interactive installation, you can do so by executing the following
-command and then follow the wizard:
-
+### 1. Projekt klonen
 ```bash
-composer exec typo3 setup
+git clone <repository-url> suet
+cd suet
 ```
 
-### Setup unattended (optional)
-
-If you're a more advanced user, you might want to leverage the unattended installation.
-To do this, you need to execute the following command and substitute the arguments
-with your own environment configuration.
-
+### 2. DDEV-Umgebung starten
 ```bash
-export TYPO3_SETUP_ADMIN_PASSWORD=$(tr -dc "_A-Za-z0-9#=$()/" < /dev/urandom | head -c24)
-composer exec -- typo3 setup \
-    --no-interaction \
-    --server-type=other \
-    --driver=sqlite \
-    --admin-username=admin \
-    --admin-email="info@example.com" \
-    --project-name="My TYPO3 Project" \
-    --create-site="http://localhost:8000/"
-echo "Admin password: ${TYPO3_SETUP_ADMIN_PASSWORD}"
+ddev start
 ```
 
-### Development server
+### 3. Composer-Abhängigkeiten installieren
+```bash
+ddev composer install
+```
 
-While it's advised to use a more sophisticated web server such as
-Apache 2 or Nginx, you can instantly run the project by using PHPs` built-in
-[web server](https://secure.php.net/manual/en/features.commandline.webserver.php).
+### 4. Umgebungsvariablen einrichten
+```bash
+ln -s .env.local .env
+```
+*Hinweis: Falls die .env-Dateien nicht vorhanden sind, bitte beim Entwickler anfragen.*
 
-* `TYPO3_CONTEXT=Development php -S localhost:8000 -t public`
-* open your browser at "http://localhost:8000"
+### 5. Datenbank importieren
+```bash
+ddev dump-db-fast
+```
 
-Please be aware that the built-in web server is single threaded and only meant
-to be used for development.
+## Entwicklung starten
 
-##  Next steps
+Nach erfolgreicher Einrichtung ist das Projekt unter der DDEV-URL erreichbar:
+- Frontend: `https:/suet.ddev.site`
+- Backend: `https://suet.ddev.site/typo3`
 
-* [Getting Started with TYPO3](https://docs.typo3.org/permalink/t3start:start)
-* [Create a Site Package](https://docs.typo3.org/permalink/t3sitepackage:start)
+## Nützliche DDEV-Befehle
 
-## License
+```bash
+ddev start          # Entwicklungsumgebung starten
+ddev stop           # Entwicklungsumgebung stoppen
+ddev restart        # Entwicklungsumgebung neu starten
+ddev ssh auth           # SSH-Zugang zum Container
+
+ddev dump-db-fast  #Datenbank vom Server laden
+ddev deploy     # Daten auf Server spielen
+ddev deploy-db-fast  # Datenbank auf Server spielen (Achtung überschreibt die Datenbank)
+
+ddev composer <cmd> # Composer-Befehle ausführen
+ddev exec <cmd>     # Befehle im Container ausführen
+```
+
+## Projektstruktur
+
+- `packages/` - Eigene TYPO3-Extensions
+- `config/` - TYPO3-Konfiguration
+- `public/` - Web-Root
+- `var/` - TYPO3-Cache und Logs
+
+## Lizenz
 
 GPL-2.0 or later
